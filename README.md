@@ -1,26 +1,27 @@
 # Module Project: Advanced Form Management - User Onboarding
+
 ## Project Description
 
 We've seen many different styles of form management by now -- simple to complex. Today we are going to unleash your inner form-wizard! 🧙
 
 ## Set Up The Project
 
-- [ ] Start off by installing a blank React app by using Create React App.
-- [ ] Add the following as dependencies inside your React app:
+- [x] Start off by installing a blank React app by using Create React App.
+- [x] Add the following as dependencies inside your React app:
   - `formik`
   - `yup`
   - `axios`
-- [ ] Create a component file called `Form.js`, import it into your `App.js` file, and place the component in your JSX there.
+- [x] Create a component file called `Form.js`, import it into your `App.js` file, and place the component in your JSX there.
 
 ## STEP 1 - Create Your Formik Form
 
 We want to create a form to onboard a new user to our system. We need _at least_ the following pieces of information about our new user:
 
-- [ ] Name
-- [ ] Email
-- [ ] Password
-- [ ] Terms of Service (checkbox)
-- [ ] A Submit button to send our form data to the server.
+- [x] Name
+- [x] Email
+- [x] Password
+- [x] Terms of Service (checkbox)
+- [x] A Submit button to send our form data to the server.
 
 ## STEP 2 - Implement Form Validation and Error Messaging
 
