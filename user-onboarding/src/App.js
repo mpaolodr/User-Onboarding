@@ -1,7 +1,7 @@
 import React from "react";
 
 //components
-import UserForm from "./components/Form.js";
+import UserForm from "./components/Form";
 
 //styles
 import "./App.css";
