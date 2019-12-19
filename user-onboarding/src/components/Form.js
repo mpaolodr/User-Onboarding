@@ -37,14 +37,16 @@ const UserForm = ({ values, touched, errors, status }) => {
         <button type="submit">Submit</button>
       </Form>
 
-      {user.map(obj => {
-        return (
-          <div key={obj.id} className="userCard">
-            <h2>{obj.name}</h2>
-            <h2>{obj.email}</h2>
-          </div>
-        );
-      })}
+      <div className="container">
+        {user.map(obj => {
+          return (
+            <div key={obj.id} className="userCard">
+              <h2>{obj.name}</h2>
+              <h2>{obj.email}</h2>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
@@ -78,13 +80,12 @@ const FormikUserForm = withFormik({
       "You got to accept or we won't accept you too!"
     )
   }),
-  handleSubmit(values, { setStatus }) {
+  handleSubmit(values, { setStatus, resetForm }) {
     axios
       .post("https://reqres.in/api/users/", values)
       .then(res => {
-        console.log(res.data);
         setStatus(res.data);
-        setStatus([]);
+        resetForm();
       })
       .catch(err => {
         console.log(err);

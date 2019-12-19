@@ -4,12 +4,18 @@ import React from "react";
 import UserForm from "./components/Form";
 
 //styles
-import "./App.css";
+import "./App.scss";
 
 function App() {
   return (
     <div className="App">
       <UserForm />
+      <div className="footer">
+        <p>
+          I customized the wicked cool background on my homepage at{" "}
+          <a href="SVGBackgrounds.com">SVGBackgrounds.com</a> .
+        </p>
+      </div>
     </div>
   );
 }
