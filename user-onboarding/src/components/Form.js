@@ -28,6 +28,19 @@ const UserForm = ({ values, touched, errors, status }) => {
           <Field type="password" name="password" placeholder="Password" />
           {touched.password && errors.password && <p>{errors.password}</p>}
         </label>
+        {/* for stretch */}
+        <label>
+          Role:
+          <Field as="select" name="role">
+            <option disabled value="Choose One">
+              Choose One
+            </option>
+            <option value="Front-End Developer">Front-End Developer</option>
+            <option value="Back-End Developer">Back-End Developer</option>
+            <option value="UX/UI Designer">UX/UI Designer</option>
+            <option value="Project Manager">Project Manager</option>
+          </Field>
+        </label>
         <label>
           Terms of Service:
           <Field type="checkbox" name="terms" checked={values.terms} />
@@ -43,6 +56,7 @@ const UserForm = ({ values, touched, errors, status }) => {
             <div key={obj.id} className="userCard">
               <h2>{obj.name}</h2>
               <h2>{obj.email}</h2>
+              <h2>{obj.role}</h2>
             </div>
           );
         })}
@@ -52,12 +66,13 @@ const UserForm = ({ values, touched, errors, status }) => {
 };
 
 const FormikUserForm = withFormik({
-  mapPropsToValues({ name, email, password, terms }) {
+  mapPropsToValues({ name, email, password, terms, role }) {
     return {
       name: name || "",
       email: email || "",
       password: "",
-      terms: false
+      terms: false,
+      role: "Choose One"
     };
   },
   validationSchema: Yup.object().shape({
@@ -78,12 +93,22 @@ const FormikUserForm = withFormik({
     terms: Yup.boolean().oneOf(
       [true],
       "You got to accept or we won't accept you too!"
-    )
+    ),
+
+    role: Yup.string()
+      .oneOf([
+        "Front-End Developer",
+        "Back-End Developer",
+        "UX/UI Designer",
+        "Project Manager"
+      ])
+      .required("Select one")
   }),
   handleSubmit(values, { setStatus, resetForm }) {
     axios
       .post("https://reqres.in/api/users/", values)
       .then(res => {
+        console.log(res.data);
         setStatus(res.data);
         resetForm();
       })
